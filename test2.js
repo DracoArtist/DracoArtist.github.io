@@ -11,10 +11,10 @@ function startGame() {
     let b1 = document.getElementById("mb").value; 
     let mb = parseFloat(b1);
     let c1 = document.getElementById("vrx").value; 
-    let va1 = parseFloat(c1);
+    let va4 = parseFloat(c1);
+    let va1 = va4/0.2;
     let va = ((ma-mb)*va1)/(ma+mb);
     let vb = (2*ma*va1)/(ma+mb);
-    document.getElementById("one").innerHTML = va1;
     myGameArea.start();
     myPiece = new component (0,290, 10, 0, 2*Math.PI, "red", ma, va1,va);
     myObstacle = new component (300,290, 10, 0, 2*Math.PI, "blue", mb, 0,vb);
@@ -95,19 +95,23 @@ function mypieceSpeed(){
     if (myPiece.x > platform.right) {
         myPiece.speedY += g;
     }
-    else {
-        if (myPiece.speedX>0){
-            myPiece.speedX -= myPiece.acc;
-        }
-        else if (myPiece.speedX<0){
-            myPiece.speedX += myPiece.acc;
-        }
-        if ((myPiece.x+10) >= myObstacle.left) {
-            myPiece.speedX =  myPiece.vaf; 
-        }
+    if ((myPiece.x+10) >= myObstacle.left) {
+        myPiece.speedX =  myPiece.vaf; 
     }
+    
 } 
 
+function myPieceAcc(){
+    if (myPiece.speedX>0){
+        myPiece.speedX -= myPiece.acc;
+    }
+    else if (myPiece.speedX<0){
+        myPiece.speedX += myPiece.acc;
+    }
+    else {
+        myPiece.speedX = myPiece.speedX;
+    }
+}
 function myobstacleSpeed(){
     if (myObstacle.x > platform.right) {
         myObstacle.speedY += g;
@@ -120,16 +124,12 @@ function myobstacleSpeed(){
 
 function updateGameArea(){
     if (myObstacle.y > myGoal.y){
-        if(myObstacle.x>myGoal.x){ 
-            if (myObstacle.x<(myGoal+100)) {
-                myGameArea.stop();
-
-            }
-        }
+        myGameArea.stop();
     }
     else{
     myobstacleSpeed();
     mypieceSpeed();
+    myPieceAcc();
     myGameArea.clear();
     myPiece.x += myPiece.speedX;
     myPiece.y += myPiece.speedY;

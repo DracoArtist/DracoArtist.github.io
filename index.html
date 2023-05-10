@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <button onclick="startGame()">Commencer!</button>
+    <button onclick="reload()">Cliquer avant de recommencer</button>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<p>masse de la particule gauche: <input type="number" id="mr"/>
+</p>
+<p>masse de la particule droite: <input type="number" id="mb"/>
+</p>
+<p>vitesse x de la particule gauche: <input type="number" id="vrx"/>
+</p>
+<p>coefficient de frottement: <input type="number" id="frt"/>
+</p>
+<p id="one"></p>
+<canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;"></canvas>
+<h1>Les questions</h1>
+<p>Dans ce deuxième niveau, le but est de donner suffisamment d’énergie à la particule droite afin qu’elle se rende jusqu’à la plateforme doré. Cette énergie lui sera conféré par la particule gauche, qui va entrer en collision avec elle. Une infinité de solutions s’offrent à vous pour résoudre ce problème. Voici les trois défis que nous vous lançons :</p>
+<ol>
+    <li>Calculez la vitesse initiale (à x=0) que la balle gauche doit avoir afin de donner suffisamment d’énergie à la balle droite pour qu’elle atteigne l’objectif si cette dernière à une masse de 5 kg.</li>
+    <li>Si c’était un ressort qui a une constante de rappel de k=6 N/m qui donnait don énergie initiale à la balle gauche, quelle devrait être sa contraction?</li>
+    <li>Si la balle gauche a une vitesse initiale de 10m/s, une masse de 40kg et que le coefficient de friction est de 0.04, quelle doit être la masse de la balle droite afin de réussir le niveau?</li>
+</ol>
+<h1>Le rappel de la matière</h1>
+<h2>Newton</h2>
+<p>Trois lois ont été énoncées par Newton et sont au cœur même de la mécanique classique. Pour ce niveau, deux d’entre elles seront fondamentales.</p>
+<p>La première explique que tout corps a une certaine inertie. Cette propriété fait en sorte qu’un objet va conserver son état de mouvement à moins qu’une force ne lui soit appliquée. Ce mouvement d’un objet qui ne subit pas de force est nommé mouvement rectiligne uniforme (MRU).
+    </p>
+<p>La deuxième loi de Newton décrit le résultat d’une telle force sur le mouvement d’un objet. Cette loi peut être énoncée par l’équation
+    <ul> ∑F=ma </ul>
+    Elle dit que l’accélération d’un objet est proportionnelle à la force résultante lui étant appliquée et inversement proportionnelle à son inertie (sa masse). 
+    </p>
+<h2>La quantité de mouvement</h2>
+<p>La quantité de mouvement est un vecteur p ⃑ qui est défini comme le produit de la masse d’un corps et de sa vitesse.  Ainsi
+    <ul>p=mv</ul>
+    Il est intéressant de noter que si nous dérivons la quantité de mouvement par rapport au temps, nous retombons sur l’équation (1)
+    <ul>(dp)/dt=d/dt(mv)=ma=∑F ⃑ </ul>
+    Cela devient particulièrement intéressant lors de collisions. Dans un système où la quantité de mouvement est conservée, on a alors 
+    <ul>(∆P)=0=(p1)+(p2)+⋯+(pn)</ul>    
+    où n est la quantité de particules du système
+</p>
+<h2>La cinématique</h2>
+<p>
+    Plusieurs relations entre position, accélération et vitesse sont au cœur de la cinématique.
+    <li>v=v0+at</li>
+    <li>r=r0+1/2((v0)+v)t</li>
+    <li>r=r0+(v0)t+1/2(at)</li>
+    <li>x=(vx0)*t</li>
+</p>
+<h2>La friction</h2>
+<p>
+    La friction est la force qui empêche deux surfaces de glisser l’une sur l’autre, ou qui s’oppose à ce mouvement. Elle est divisée en deux types, le frottement cinétique et statique. Le frottement cinétique F est la force de frottement qui s’oppose au glissement de deux surfaces, une fois ces surfaces en mouvement l’une par rapport à l’autre. C’est ce frottement qui entre en ligne de compte dans ce niveau
+Cette force est proportionnelle à la force normale exercée par l‘une des surfaces sur l’autre. L’équations qui décrit cette force est la suivantes :
+<ul>F= μN</ul>
+où μ est un coefficient de frottement que vous avez la liberté de choisir dans ce niveau. Ce coefficient est toujours compris entre 0 et 1.
+</p>
+<h2>Les ressorts</h2>
+La loi de Hooke affirme que la force d’un ressort (ou d’un corps élastique) peut être décrite comme suit :
+<ul>F=-k∆d</ul>
+Où F est la force du ressort, k est une constante propre au ressort en question et ∆d est l’étirement ou la compression du ressort depuis son état de repos.
+En réalité, cette loi n’est valide que lorsque les contractions ou étirements du ressort ne sont pas limites, mais cela est négligeable dans ce niveau.
+Aussi, son énergie potentielle est la suivante:
+<ul>U=(kx^2)/2</ul>
+<h2>Énergie cinétique</h2>
+<p>Rappelons que l'énergie cinétique est calculé grâce à la formule suivante:</p>
+<ul>E=1/2 (mv^2)</ul>
+</head>
+<script src="test2.js"></script>
+
+</body>
+</html>
