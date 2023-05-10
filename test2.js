@@ -120,11 +120,20 @@ function myobstacleSpeed(){
         myObstacle.speedX = myObstacle.vaf;
     }
 }
+function GameResult(){
+    if ((myObstacle.x+10)<myGoal.x || (myObstacle.x-10)>(myGoal.x+100)) {
+        alert("niveau manqué, meilleur succès la prochaine fois!")
+    }
+    else {
+        alert("niveau réussi!")
+    }
+}
 
 
 function updateGameArea(){
-    if (myObstacle.y > myGoal.y){
+    if (((myObstacle.y+10) > myGoal.y)){
         myGameArea.stop();
+        GameResult();
     }
     else{
     myobstacleSpeed();
