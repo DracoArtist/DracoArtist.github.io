@@ -1,4 +1,7 @@
-let g = 0.5;
+let g = 0.392;
+// on veut rajouter 9.8/50 m/s à chaque 20ms
+// chaque m/s = pixel/0.5 donc, chaque pixel = m/s*0,5
+//9,8/0,5/50 = 
 
 
 function reload(){
@@ -12,7 +15,7 @@ function startGame() {
     let mb = parseFloat(b1);
     let c1 = document.getElementById("vrx").value; 
     let va4 = parseFloat(c1);
-    let va1 = va4/0.2;
+    let va1 = va4/0.5;
     let va = ((ma-mb)*va1)/(ma+mb);
     let vb = (2*ma*va1)/(ma+mb);
     myGameArea.start();
@@ -30,9 +33,9 @@ function quad() {
     let adb = myGameArea.context;
     adb.drawImage(img,0,0,1000,1000);
   }
-  // chaque carre est de 25 pixel par 25 pixel = 10cmx10cm
-  // les vitesses du programme sont en pixel/20ms. donc 1/2,5cm / 1/50s, donc 20cm/s, donc 0,2m/s
-  // il faut donc diviser les vitesses entrees par le joueur par 0,2 afin d'avoir les bonnes valeurs
+  // chaque carre est de 25 pixel par 25 pixel = 1mx1m
+  // les vitesses du programme sont en pixel/20ms. donc 1/25m / 1/50s, donc 2s/m, donc 0,5 m/s
+  // il faut donc diviser les vitesses entrees par le joueur par 0,5 afin d'avoir les bonnes valeurs
 
 let myGameArea = {
     canvas : document.getElementById("myCanvas"),
